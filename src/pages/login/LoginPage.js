@@ -27,7 +27,7 @@ function LoginPage() {
   return (
     <main className="login-container">
       <figure className="figure">
-        <img src={loginSvg} alt="" />
+        <img src={loginSvg} alt="homem branco sentando em um escritório mexendo no computador" />
       </figure>
       <section className="forms-section">
         <div className="welcome-container">
@@ -40,6 +40,7 @@ function LoginPage() {
             <input
               type="email"
               name="email"
+              required
               placeholder="Digite seu email"
               onChange={handleChange}
             />
@@ -49,6 +50,7 @@ function LoginPage() {
             <input
               type="password"
               name="password"
+              required
               placeholder="Digite sua senha"
               onChange={handleChange}
             />
