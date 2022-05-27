@@ -20,36 +20,42 @@ function CreateContact() {
   return (
     <main className="main-create">
       <Header path="/contactList" />
-      <div className="forms-container">
+      <div className="create-forms-container">
         <form>
-          <label htmlFor="name">
-            <p>Nome Completo</p>
-            <input
-              name="name"
-              required
-              placeholder="Digite o nome do contato"
-              onChange={handleChange}
-            />
-          </label>
-          <div>
-            <label htmlFor="email">
-              <p>Email</p>
+          <div className="create-title-forms">
+            <h1>Cadastre um novo contato</h1>
+            <p>Preencha as informações para cadastrar um novo contato</p>
+          </div>
+          <div className="create-inputs-container">
+            <label htmlFor="name">
+              <p>Nome Completo</p>
               <input
-                name="email"
+                name="name"
                 required
-                placeholder="Digite seu email"
+                placeholder="Digite o nome do contato"
                 onChange={handleChange}
               />
             </label>
-            <label htmlFor="mobile">
-              <p>Celular</p>
-              <input
-                name="mobile"
-                required
-                placeholder="Digite o celular"
-                onChange={handleChange}
-              />
-            </label>
+            <div className="email-mobile-inputs">
+              <label htmlFor="email">
+                <p>Email</p>
+                <input
+                  name="email"
+                  required
+                  placeholder="Digite seu email"
+                  onChange={handleChange}
+                />
+              </label>
+              <label htmlFor="mobile">
+                <p>Celular</p>
+                <input
+                  name="mobile"
+                  required
+                  placeholder="Digite o celular"
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
           </div>
           <button
             type="submit"
