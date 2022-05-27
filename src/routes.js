@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import ContactList from './pages/contactList/ContactList';
+import CreateContact from './pages/createContact/CreateContact';
 import LoginPage from './pages/login/LoginPage';
 
 function RoutesPages() {
@@ -8,6 +9,7 @@ function RoutesPages() {
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/contactList" element={<ContactList />} />
+      <Route path="/createContact" element={<CreateContact />} />
     </Routes>
   );
 }

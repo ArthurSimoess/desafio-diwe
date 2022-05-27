@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ButtonTable from '../../components/buttonTable/BtnTable';
 import Header from '../../components/header/Header';
 import './contactListStyle.scss';
@@ -6,6 +7,12 @@ import trash from '../../assets/images/trash.svg';
 import editIcon from '../../assets/images/edit.svg';
 
 function ContactList() {
+  const navigate = useNavigate();
+
+  function createContactBtn() {
+    navigate('/createContact');
+  }
+
   return (
     <main className="contactList-container">
       <Header path="/" />
@@ -14,6 +21,7 @@ function ContactList() {
           <h1>Listagem de Contatos</h1>
           <button
             type="button"
+            onClick={createContactBtn}
           >
             Adicionar novo contato
           </button>
