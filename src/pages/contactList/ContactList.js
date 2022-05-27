@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ButtonTable from '../../components/buttonTable/BtnTable';
+import BtnHeaderTable from '../../components/btnHeaderTable/BtnHeaderTable';
 import Header from '../../components/header/Header';
 import './contactListStyle.scss';
 import trash from '../../assets/images/trash.svg';
@@ -30,22 +30,22 @@ function ContactList() {
           <thead className="th-head">
             <tr>
               <th>
-                <ButtonTable
+                <BtnHeaderTable
                   title="#"
                 />
               </th>
               <th>
-                <ButtonTable
+                <BtnHeaderTable
                   title="Nome"
                 />
               </th>
               <th>
-                <ButtonTable
+                <BtnHeaderTable
                   title="Celular"
                 />
               </th>
               <th>
-                <ButtonTable
+                <BtnHeaderTable
                   title="Email"
                 />
               </th>
@@ -64,7 +64,7 @@ function ContactList() {
                 <button
                   type="button"
                 >
-                  <img src={trash} alt="Papel e caneta simbolizando uma edição" />
+                  <img src={trash} alt="Lata de lixo simbolizando uma remoção" />
                   Remover
                 </button>
                 <button
@@ -74,18 +74,6 @@ function ContactList() {
                   Editar
                 </button>
               </td>
-            </tr>
-            <tr>
-              <td>02</td>
-              <td>Parker</td>
-              <td>(31) 3333-32232</td>
-              <td>aefoeijae@gmail.com</td>
-            </tr>
-            <tr>
-              <td>03</td>
-              <td>Parker</td>
-              <td>(31) 3333-32232</td>
-              <td>aefoeijae@gmail.com</td>
             </tr>
           </tbody>
         </table>

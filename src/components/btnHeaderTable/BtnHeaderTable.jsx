@@ -4,7 +4,7 @@ import React from 'react';
 import arrowDown from '../../assets/images/chevron-down.svg';
 import './btnTableStyle.scss';
 
-function ButtonTable({ title }) {
+function BtnHeaderTable({ title }) {
   return (
     <button
       type="button"
@@ -17,8 +17,8 @@ function ButtonTable({ title }) {
   );
 }
 
-ButtonTable.propTypes = {
+BtnHeaderTable.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default ButtonTable;
+export default BtnHeaderTable;

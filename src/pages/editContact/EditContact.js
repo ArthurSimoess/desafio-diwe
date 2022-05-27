@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import ContactForms from '../../components/contactForms/ContactForms';
 import Header from '../../components/header/Header';
-import './createStyle.scss';
+import './editContactStyle.scss';
 
-function CreateContact() {
-  const [contact, setContact] = useState({
+function EditContact() {
+  const [editContact, setEditContact] = useState({
     name: '',
     email: '',
     mobile: '',
@@ -13,26 +13,26 @@ function CreateContact() {
 
   function handleChange({ target }) {
     const { name, value } = target;
-    setContact({
-      ...contact,
+    setEditContact({
+      ...editContact,
       [name]: value,
     });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const toSave = {
-      ...contact,
-      mobile: String(contact.mobile),
+    const toUpdate = {
+      ...editContact,
+      mobile: String(editContact.mobile),
     };
-    console.log(toSave);
+    console.log(toUpdate);
   }
 
   return (
     <main className="main-create">
       <Header path="/contactList" />
       <ContactForms
-        contact={contact}
+        contact={editContact}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
@@ -40,4 +40,4 @@ function CreateContact() {
   );
 }
 
-export default CreateContact;
+export default EditContact;
