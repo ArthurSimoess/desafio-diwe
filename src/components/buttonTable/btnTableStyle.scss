@@ -3,7 +3,7 @@
 .table-btn {
   cursor: pointer;
   display: flex;
-  gap: 9px;
+  gap: 3px;
 
   p {
     font-family: "Poppins";
@@ -13,8 +13,8 @@
     text-align: center;
   }
 
-  image {
-    width: 10px;
-    height: 5px;
+  img {
+    width: 25px;
+    height: 20px;
   }
 }

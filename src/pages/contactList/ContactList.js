@@ -2,6 +2,8 @@ import React from 'react';
 import ButtonTable from '../../components/buttonTable/BtnTable';
 import Header from '../../components/header/Header';
 import './contactListStyle.scss';
+import trash from '../../assets/images/trash.svg';
+import editIcon from '../../assets/images/edit.svg';
 
 function ContactList() {
   return (
@@ -17,7 +19,7 @@ function ContactList() {
           </button>
         </div>
         <table className="table">
-          <thead>
+          <thead className="th-head">
             <tr>
               <th>
                 <ButtonTable
@@ -39,23 +41,43 @@ function ContactList() {
                   title="Email"
                 />
               </th>
+              <th>
+                <p>Ações</p>
+              </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="tb-body">
             <tr>
-              <td>Peter</td>
+              <td>01</td>
               <td>Parker</td>
-              <td>Spiderman</td>
+              <td>(31) 3333-32232</td>
+              <td>aefoeijae@gmail.com</td>
+              <td className="btn-body">
+                <button
+                  type="button"
+                >
+                  <img src={trash} alt="Papel e caneta simbolizando uma edição" />
+                  Remover
+                </button>
+                <button
+                  type="button"
+                >
+                  <img src={editIcon} alt="Papel e caneta simbolizando uma edição" />
+                  Editar
+                </button>
+              </td>
             </tr>
             <tr>
-              <td>Bruce</td>
-              <td>Wayne</td>
-              <td>Batman</td>
+              <td>02</td>
+              <td>Parker</td>
+              <td>(31) 3333-32232</td>
+              <td>aefoeijae@gmail.com</td>
             </tr>
             <tr>
-              <td>Clark</td>
-              <td>Kent</td>
-              <td>Superman</td>
+              <td>03</td>
+              <td>Parker</td>
+              <td>(31) 3333-32232</td>
+              <td>aefoeijae@gmail.com</td>
             </tr>
           </tbody>
         </table>

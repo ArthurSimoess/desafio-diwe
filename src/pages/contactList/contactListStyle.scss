@@ -43,6 +43,64 @@
       font-size: 16px;
       line-height: 148%;
       text-align: center;
+      cursor: pointer;
     }
+  }
+}
+
+table {
+  border-spacing: 0px;
+}
+
+.th-head {
+  tr {
+    height: 64px;
+
+    p {
+      font-family: 'Poppins';
+      font-style: normal;
+      text-align: left;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 120%;
+      color: $title;
+    }
+  }
+
+  th {
+    padding: 0 30px;
+  }
+}
+
+.tb-body {
+  tr {
+    height: 64px;
+
+    td {
+      padding: 0 30px;
+      width: 220px;
+    }
+
+    .btn-body {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      height: 64px;
+  
+      button {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+      }
+    }
+  }
+
+  tr:nth-child(odd) {
+    background-color: #F1F3F5;
+  }
+
+  tr:nth-child(even) {
+    background: #FFFFFF
   }
 }
