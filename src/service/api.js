@@ -38,10 +38,28 @@ export const getContact = async () => {
   }
 };
 
+export const getContactById = async (id) => {
+  try {
+    const result = await api.get(`/contacts/${id}`);
+    return result;
+  } catch (error) {
+    console.error(error);
+    return 'error';
+  }
+};
+
 export const createContact = async (newContact) => {
   try {
     await api.post('/contacts', newContact);
     console.log('Contato criado com sucesso');
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const updateContact = async (id, contact) => {
+  try {
+    await api.put(`contacts/${id}`, contact);
   } catch (error) {
     console.error(error);
   }

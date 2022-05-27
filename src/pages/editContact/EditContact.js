@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-no-bind */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ContactForms from '../../components/contactForms/ContactForms';
 import Header from '../../components/header/Header';
+import { getContactById } from '../../service/api';
 import './editContactStyle.scss';
 
 function EditContact() {
@@ -12,7 +13,13 @@ function EditContact() {
     mobile: '',
   });
   const { id } = useParams();
-  console.log(id);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await getContactById(id);
+      setEditContact(data);
+    })();
+  }, []);
 
   function handleChange({ target }) {
     const { name, value } = target;
