@@ -8,7 +8,6 @@ function BtnHeaderTable({ title }) {
   return (
     <button
       type="button"
-      handleClick={() => { }}
       className="table-btn"
     >
       <p>{title}</p>

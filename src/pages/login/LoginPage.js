@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import loginSvg from '../../assets/images/login.svg';
 import { auth } from '../../service/api';
 import './loginStyle.scss';
@@ -8,6 +9,7 @@ function LoginPage() {
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
 
   function handleChange({ target }) {
     const { name, value } = target;
@@ -19,9 +21,9 @@ function LoginPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(loginInfo);
     const result = await auth(loginInfo);
-    console.log(result);
+    localStorage.setItem('token', result.token);
+    navigate('/contactList');
   }
 
   return (

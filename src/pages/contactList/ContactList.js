@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BtnHeaderTable from '../../components/btnHeaderTable/BtnHeaderTable';
 import Header from '../../components/header/Header';
 import './contactListStyle.scss';
 import trash from '../../assets/images/trash.svg';
 import editIcon from '../../assets/images/edit.svg';
+import { getContact } from '../../service/api';
 
 function ContactList() {
   const navigate = useNavigate();
+  const [contactList, setContactList] = useState();
 
   function createContactBtn() {
     navigate('/createContact');
   }
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await getContact();
+      setContactList(data);
+      console.log(contactList);
+    })();
+  }, []);
 
   return (
     <main className="contactList-container">
