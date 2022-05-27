@@ -29,6 +29,11 @@ export const auth = async (login) => {
 };
 
 export const getContact = async () => {
-  const result = await api.get('/contacts');
-  return result;
+  try {
+    const result = await api.get('/contacts');
+    return result;
+  } catch (error) {
+    console.error(error);
+    return error.response.data.errors;
+  }
 };

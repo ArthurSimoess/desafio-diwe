@@ -9,17 +9,22 @@ import { getContact } from '../../service/api';
 
 function ContactList() {
   const navigate = useNavigate();
-  const [contactList, setContactList] = useState();
+  const [contactList, setContactList] = useState([]);
 
   function createContactBtn() {
     navigate('/createContact');
   }
 
+  function editBtn({ target }) {
+    const id = target.name;
+    navigate(`/editContact/${id}`);
+  }
+
   useEffect(() => {
     (async () => {
-      const { data } = await getContact();
-      setContactList(data);
-      console.log(contactList);
+      const result = await getContact();
+      if (!result.data) return;
+      setContactList(result.data);
     })();
   }, []);
 
@@ -65,26 +70,33 @@ function ContactList() {
             </tr>
           </thead>
           <tbody className="tb-body">
-            <tr>
-              <td>01</td>
-              <td>Parker</td>
-              <td>(31) 3333-32232</td>
-              <td>aefoeijae@gmail.com</td>
-              <td className="btn-body">
-                <button
-                  type="button"
-                >
-                  <img src={trash} alt="Lata de lixo simbolizando uma remoção" />
-                  Remover
-                </button>
-                <button
-                  type="button"
-                >
-                  <img src={editIcon} alt="Papel e caneta simbolizando uma edição" />
-                  Editar
-                </button>
-              </td>
-            </tr>
+            {
+              contactList.map((contact) => (
+                <tr key={contact.id}>
+                  <td>{contact.id}</td>
+                  <td>{contact.name}</td>
+                  <td>{contact.mobile}</td>
+                  <td>{contact.email}</td>
+                  <td className="btn-body">
+                    <button
+                      type="button"
+                      name={contact.id}
+                    >
+                      <img src={trash} alt="Lata de lixo simbolizando uma remoção" />
+                      Remover
+                    </button>
+                    <button
+                      type="button"
+                      name={contact.id}
+                      onClick={editBtn}
+                    >
+                      <img src={editIcon} alt="Papel e caneta simbolizando uma edição" />
+                      Editar
+                    </button>
+                  </td>
+                </tr>
+              ))
+            }
           </tbody>
         </table>
       </section>
