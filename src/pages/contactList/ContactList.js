@@ -15,9 +15,8 @@ function ContactList() {
     navigate('/createContact');
   }
 
-  function editBtn({ target }) {
-    const id = target.name;
-    navigate(`/editContact/${id}`);
+  function editBtn(id) {
+    navigate(`/editContact/${Number(id)}`);
   }
 
   useEffect(() => {
@@ -87,8 +86,7 @@ function ContactList() {
                     </button>
                     <button
                       type="button"
-                      name={contact.id}
-                      onClick={editBtn}
+                      onClick={() => editBtn(contact.id)}
                     >
                       <img src={editIcon} alt="Papel e caneta simbolizando uma edição" />
                       Editar

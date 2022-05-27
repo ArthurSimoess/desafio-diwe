@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+// user@diwe.com.br
+// Mob20we23##
+
 const api = axios.create({
   baseURL: 'https://contacts-api.prd.parceirodaconstrucao.com.br',
 });
@@ -14,9 +17,6 @@ api.interceptors.request.use(async (config) => {
 
   return config;
 });
-
-// user@diwe.com.br
-// Mob20we23##
 
 export const auth = async (login) => {
   try {
@@ -35,5 +35,14 @@ export const getContact = async () => {
   } catch (error) {
     console.error(error);
     return error.response.data.errors;
+  }
+};
+
+export const createContact = async (newContact) => {
+  try {
+    await api.post('/contacts', newContact);
+    console.log('Contato criado com sucesso');
+  } catch (error) {
+    console.error(error);
   }
 };

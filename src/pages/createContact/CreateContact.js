@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import ContactForms from '../../components/contactForms/ContactForms';
 import Header from '../../components/header/Header';
+import { createContact } from '../../service/api';
 import './createStyle.scss';
 
 function CreateContact() {
@@ -19,13 +20,13 @@ function CreateContact() {
     });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const toSave = {
       ...contact,
       mobile: String(contact.mobile),
     };
-    console.log(toSave);
+    await createContact(toSave);
   }
 
   return (
