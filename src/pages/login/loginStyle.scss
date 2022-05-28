@@ -1,0 +1,95 @@
+@import '../../styles/main';
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+}
+
+.figure {
+  img {
+    width: 546px;
+    height: 546px;
+  }
+}
+
+.forms-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+
+  .welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: $title;
+      font-family: "Poppins";
+      font-weight: 700;
+      line-height: 39.6px;
+    }
+  
+    p {
+      color: $paragraph;
+      font-size: 18px;
+      font-style: normal;
+      font-family: "Montserrat";
+      font-weight: 500;
+      line-height: 25.92px;
+      opacity: 0.64;
+    }
+  }
+
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    label {
+      p {
+        color: $primary-dark;
+        font-size: 16px;
+        font-family: "Montserrat";
+        font-weight: 700;
+        line-height: 23.68px;
+      }
+    }
+    
+    input {
+      width: 504px;
+      height: 56px;
+      border-radius: 8px;
+      padding: 16px;
+      background-color: $neutral-light;
+      font-family: "Montserrat";
+      font-weight: 500;
+      color: $paragraph;
+      opacity: 0.64;
+    }
+
+    button {
+      background-color: $primary-dark;
+      width: 504px;
+      height: 56px;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      margin-top: 40px;
+      cursor: pointer;
+      font-family: "Montserrat";
+      font-weight: 500;
+    }
+  }
+}
