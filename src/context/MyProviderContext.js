@@ -17,11 +17,20 @@ function MyProviderContext({ children }) {
     action: '',
   });
 
+  const [filter, setFilter] = useState({
+    id: false,
+    name: false,
+    mobile: false,
+    email: false,
+  });
+
   const contextValue = {
     modal,
     setModal,
     message,
     setMessage,
+    filter,
+    setFilter,
   };
 
   return (
