@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BtnHeaderTable from '../../components/btnHeaderTable/BtnHeaderTable';
 import Header from '../../components/header/Header';
@@ -7,10 +7,12 @@ import trash from '../../assets/images/trash.svg';
 import editIcon from '../../assets/images/edit.svg';
 import { getContact } from '../../service/api';
 import RemoveModal from '../../components/removeModal/removeModal';
+import MyContext from '../../context/MyContext';
 
 function ContactList() {
   const navigate = useNavigate();
   const [contactList, setContactList] = useState([]);
+  const { modal, setModal } = useContext(MyContext);
 
   function createContactBtn() {
     navigate('/createContact');
@@ -18,6 +20,14 @@ function ContactList() {
 
   function editBtn(id) {
     navigate(`/editContact/${Number(id)}`);
+  }
+
+  function openRemoveModal(id, name) {
+    setModal({
+      open: true,
+      id,
+      name,
+    });
   }
 
   useEffect(() => {
@@ -30,7 +40,9 @@ function ContactList() {
 
   return (
     <main className="contactList-container">
-      <RemoveModal />
+      {
+        modal.open && <RemoveModal />
+      }
       <Header path="/" />
       <section className="list-container">
         <div className="header-list">
@@ -82,6 +94,7 @@ function ContactList() {
                     <button
                       type="button"
                       name={contact.id}
+                      onClick={() => openRemoveModal(contact.id, contact.name)}
                     >
                       <img src={trash} alt="Lata de lixo simbolizando uma remoção" />
                       Remover
