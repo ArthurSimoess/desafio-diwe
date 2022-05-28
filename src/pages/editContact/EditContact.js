@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-no-bind */
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import ContactForms from '../../components/contactForms/ContactForms';
 import Header from '../../components/header/Header';
 import { getContactById, updateContact } from '../../service/api';
 import './editContactStyle.scss';
+import MyContext from '../../context/MyContext';
 
 function EditContact() {
   const [editContact, setEditContact] = useState({
@@ -13,6 +14,8 @@ function EditContact() {
     mobile: '',
   });
   const { id } = useParams();
+  const { setMessage } = useContext(MyContext);
+  const navigate = useNavigate();
 
   const textObj = {
     title: 'Atualizar contato',
@@ -42,6 +45,12 @@ function EditContact() {
       mobile: String(editContact.mobile),
     };
     await updateContact(id, toUpdate);
+    setMessage({
+      show: true,
+      name: editContact.name,
+      action: 'editado',
+    });
+    navigate('/contactList');
   }
 
   return (

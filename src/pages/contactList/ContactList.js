@@ -22,8 +22,6 @@ function ContactList() {
     navigate('/createContact');
   }
 
-  console.log(message);
-
   function editBtn(id) {
     navigate(`/editContact/${Number(id)}`);
   }
@@ -46,13 +44,15 @@ function ContactList() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      console.log('teste setTimeOut');
       setMessage({
-        ...message,
         show: false,
+        name: '',
+        action: '',
       });
     }, 5000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [change]);
 
   return (
     <main className="contactList-container">
