@@ -1,10 +1,14 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import MyContext from '../../context/MyContext';
 import { removeContact } from '../../service/api';
 import './removeModalStyle.scss';
 
-function RemoveModal() {
-  const { modal, setModal } = useContext(MyContext);
+function RemoveModal({ change, setChange }) {
+  const {
+    modal, setModal, setMessage,
+  } = useContext(MyContext);
 
   function closeModal() {
     setModal({
@@ -17,6 +21,17 @@ function RemoveModal() {
   async function excludeContact() {
     const { id } = modal;
     await removeContact(id);
+    setMessage({
+      show: true,
+      name: modal.name,
+      action: 'removido',
+    });
+    setModal({
+      open: false,
+      name: 'usuario',
+      id: '',
+    });
+    setChange(!change);
   }
 
   return (
@@ -50,5 +65,10 @@ function RemoveModal() {
     </div>
   );
 }
+
+RemoveModal.propTypes = {
+  change: PropTypes.bool.isRequired,
+  setChange: PropTypes.func.isRequired,
+};
 
 export default RemoveModal;

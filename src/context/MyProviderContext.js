@@ -11,9 +11,17 @@ function MyProviderContext({ children }) {
     name: 'Usuário',
   });
 
+  const [message, setMessage] = useState({
+    show: false,
+    name: '',
+    action: '',
+  });
+
   const contextValue = {
     modal,
     setModal,
+    message,
+    setMessage,
   };
 
   return (

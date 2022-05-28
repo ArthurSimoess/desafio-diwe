@@ -8,15 +8,21 @@ import editIcon from '../../assets/images/edit.svg';
 import { getContact } from '../../service/api';
 import RemoveModal from '../../components/removeModal/removeModal';
 import MyContext from '../../context/MyContext';
+import SuccessMessage from '../../components/successMessage/SuccessMessage';
 
 function ContactList() {
   const navigate = useNavigate();
   const [contactList, setContactList] = useState([]);
-  const { modal, setModal } = useContext(MyContext);
+  const {
+    modal, setModal, message, setMessage,
+  } = useContext(MyContext);
+  const [change, setChange] = useState(false);
 
   function createContactBtn() {
     navigate('/createContact');
   }
+
+  console.log(message);
 
   function editBtn(id) {
     navigate(`/editContact/${Number(id)}`);
@@ -36,14 +42,30 @@ function ContactList() {
       if (!result.data) return;
       setContactList(result.data);
     })();
+  }, [change]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessage({
+        ...message,
+        show: false,
+      });
+    }, 5000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <main className="contactList-container">
       {
-        modal.open && <RemoveModal />
+        modal.open && <RemoveModal change={change} setChange={setChange} />
       }
       <Header path="/" />
+      { message.show && (
+        <SuccessMessage
+          name={message.name}
+          action={message.action}
+        />
+      )}
       <section className="list-container">
         <div className="header-list">
           <h1>Listagem de Contatos</h1>
