@@ -4,14 +4,14 @@ import React from 'react';
 import './contactFormsStyle.scss';
 
 function ContactForms({
-  contact, handleChange, handleSubmit,
+  contact, handleChange, handleSubmit, text,
 }) {
   return (
     <div className="create-forms-container">
       <form onSubmit={handleSubmit}>
         <div className="create-title-forms">
-          <h1>Cadastre um novo contato</h1>
-          <p>Preencha as informações para cadastrar um novo contato</p>
+          <h1>{text.title}</h1>
+          <p>{text.paragraph}</p>
         </div>
         <div className="create-inputs-container">
           <label htmlFor="name">
@@ -53,7 +53,7 @@ function ContactForms({
         <button
           type="submit"
         >
-          Cadastrar Contato
+          {text.btn}
         </button>
       </form>
     </div>
@@ -67,6 +67,11 @@ ContactForms.propTypes = {
     name: PropTypes.string,
     email: PropTypes.string,
     mobile: PropTypes.string,
+  }).isRequired,
+  text: PropTypes.shape({
+    title: PropTypes.string,
+    paragraph: PropTypes.string,
+    btn: PropTypes.string,
   }).isRequired,
 };
 

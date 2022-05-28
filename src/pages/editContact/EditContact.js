@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ContactForms from '../../components/contactForms/ContactForms';
 import Header from '../../components/header/Header';
-import { getContactById } from '../../service/api';
+import { getContactById, updateContact } from '../../service/api';
 import './editContactStyle.scss';
 
 function EditContact() {
@@ -13,6 +13,12 @@ function EditContact() {
     mobile: '',
   });
   const { id } = useParams();
+
+  const textObj = {
+    title: 'Atualizar contato',
+    paragraph: 'Faça as alterações necessárias e ao terminar salve seu contato',
+    btn: 'Salvar alterações',
+  };
 
   useEffect(() => {
     (async () => {
@@ -29,13 +35,13 @@ function EditContact() {
     });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const toUpdate = {
       ...editContact,
       mobile: String(editContact.mobile),
     };
-    console.log(toUpdate);
+    await updateContact(id, toUpdate);
   }
 
   return (
@@ -45,6 +51,7 @@ function EditContact() {
         contact={editContact}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        text={textObj}
       />
     </main>
   );

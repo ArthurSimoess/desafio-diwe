@@ -6,6 +6,7 @@ import './contactListStyle.scss';
 import trash from '../../assets/images/trash.svg';
 import editIcon from '../../assets/images/edit.svg';
 import { getContact } from '../../service/api';
+import RemoveModal from '../../components/removeModal/removeModal';
 
 function ContactList() {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ function ContactList() {
 
   return (
     <main className="contactList-container">
+      <RemoveModal />
       <Header path="/" />
       <section className="list-container">
         <div className="header-list">

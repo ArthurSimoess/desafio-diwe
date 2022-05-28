@@ -12,6 +12,12 @@ function CreateContact() {
     mobile: '',
   });
 
+  const textObj = {
+    title: 'Cadastre um novo contato',
+    paragraph: 'Preencha as informações para cadastrar um novo contato',
+    btn: 'Cadastrar Contato',
+  };
+
   function handleChange({ target }) {
     const { name, value } = target;
     setContact({
@@ -36,6 +42,7 @@ function CreateContact() {
         contact={contact}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        text={textObj}
       />
     </main>
   );
