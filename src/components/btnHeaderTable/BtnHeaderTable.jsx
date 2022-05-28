@@ -1,13 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import arrowDown from '../../assets/images/arrow-down.svg';
 import MyContext from '../../context/MyContext';
 import './btnTableStyle.scss';
 
 function BtnHeaderTable({ title, keyObj }) {
   const { filter, setFilter } = useContext(MyContext);
-  const [arrow, setArrow] = useState('down');
 
   const resetObj = {
     id: false,
@@ -16,16 +15,16 @@ function BtnHeaderTable({ title, keyObj }) {
     email: false,
   };
 
+  const arrow = filter[keyObj] ? 'up' : 'down';
+
   function handleClick() {
     const titles = ['id', 'name', 'mobile', 'email'];
     const [select] = titles.filter((ele) => (filter[ele] === true));
     if (select && select === keyObj) {
       setFilter({ ...resetObj });
-      setArrow('down');
     } else {
       titles.forEach((item) => {
         if (keyObj === item) {
-          setArrow('up');
           setFilter({
             ...resetObj,
             [item]: true,
