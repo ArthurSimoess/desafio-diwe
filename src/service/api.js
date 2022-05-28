@@ -51,7 +51,7 @@ export const getContactById = async (id) => {
 export const createContact = async (newContact) => {
   try {
     await api.post('/contacts', newContact);
-    console.log('Contato criado com sucesso');
+    console.log('Criado com sucesso');
   } catch (error) {
     console.error(error);
   }
@@ -60,6 +60,16 @@ export const createContact = async (newContact) => {
 export const updateContact = async (id, contact) => {
   try {
     await api.put(`contacts/${id}`, contact);
+    console.log(id, 'Atualizado com sucesso');
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const removeContact = async (id) => {
+  try {
+    await api.delete(`/contacts/${id}`);
+    console.log(id, 'Deletado com sucesso');
   } catch (error) {
     console.error(error);
   }

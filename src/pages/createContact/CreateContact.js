@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-no-bind */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ContactForms from '../../components/contactForms/ContactForms';
 import Header from '../../components/header/Header';
+import MyContext from '../../context/MyContext';
 import { createContact } from '../../service/api';
 import './createStyle.scss';
 
@@ -11,6 +13,8 @@ function CreateContact() {
     email: '',
     mobile: '',
   });
+  const { setMessage } = useContext(MyContext);
+  const navigate = useNavigate();
 
   const textObj = {
     title: 'Cadastre um novo contato',
@@ -33,6 +37,12 @@ function CreateContact() {
       mobile: String(contact.mobile),
     };
     await createContact(toSave);
+    setMessage({
+      show: true,
+      name: contact.name,
+      action: 'adicionado',
+    });
+    navigate('/contactList');
   }
 
   return (

@@ -1,0 +1,67 @@
+.deleted-message {
+  display: flex;
+  justify-content: center;
+
+  div {
+    display: flex;
+    position: absolute;
+    top: 100px;
+    height: 56px;
+    padding: 18px 67px 18px 16px;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-shadow: 1px 1px 12px rgba(224, 224, 224, 0.25);
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    p {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 144%;
+      text-align: center;
+      letter-spacing: -0.01em;
+      color: #424242;
+    }
+  }
+
+}
+
+.created-message {
+  display: flex;
+  justify-content: center;
+
+  div {
+    display: flex;
+    position: absolute;
+    top: 100px;
+    height: 56px;
+    padding: 18px 67px 18px 16px;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-shadow: 1px 1px 12px rgba(224, 224, 224, 0.25);
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    p {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 144%;
+      text-align: center;
+      letter-spacing: -0.01em;
+      color: #424242;
+    }
+  }
+}

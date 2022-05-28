@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BtnHeaderTable from '../../components/btnHeaderTable/BtnHeaderTable';
 import Header from '../../components/header/Header';
@@ -7,10 +7,16 @@ import trash from '../../assets/images/trash.svg';
 import editIcon from '../../assets/images/edit.svg';
 import { getContact } from '../../service/api';
 import RemoveModal from '../../components/removeModal/removeModal';
+import MyContext from '../../context/MyContext';
+import SuccessMessage from '../../components/successMessage/SuccessMessage';
 
 function ContactList() {
   const navigate = useNavigate();
   const [contactList, setContactList] = useState([]);
+  const {
+    modal, setModal, message, setMessage,
+  } = useContext(MyContext);
+  const [change, setChange] = useState(false);
 
   function createContactBtn() {
     navigate('/createContact');
@@ -20,18 +26,46 @@ function ContactList() {
     navigate(`/editContact/${Number(id)}`);
   }
 
+  function openRemoveModal(id, name) {
+    setModal({
+      open: true,
+      id,
+      name,
+    });
+  }
+
   useEffect(() => {
     (async () => {
       const result = await getContact();
       if (!result.data) return;
       setContactList(result.data);
     })();
-  }, []);
+  }, [change]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log('teste setTimeOut');
+      setMessage({
+        show: false,
+        name: '',
+        action: '',
+      });
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [change]);
 
   return (
     <main className="contactList-container">
-      <RemoveModal />
+      {
+        modal.open && <RemoveModal change={change} setChange={setChange} />
+      }
       <Header path="/" />
+      { message.show && (
+        <SuccessMessage
+          name={message.name}
+          action={message.action}
+        />
+      )}
       <section className="list-container">
         <div className="header-list">
           <h1>Listagem de Contatos</h1>
@@ -82,6 +116,7 @@ function ContactList() {
                     <button
                       type="button"
                       name={contact.id}
+                      onClick={() => openRemoveModal(contact.id, contact.name)}
                     >
                       <img src={trash} alt="Lata de lixo simbolizando uma remoção" />
                       Remover
