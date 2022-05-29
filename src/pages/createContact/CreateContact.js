@@ -5,6 +5,7 @@ import ContactForms from '../../components/contactForms/ContactForms';
 import Header from '../../components/header/Header';
 import MyContext from '../../context/MyContext';
 import { createContact } from '../../service/api';
+import getToken from '../../service/localStorage';
 import './createStyle.scss';
 
 function CreateContact() {
@@ -32,11 +33,12 @@ function CreateContact() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const token = getToken();
     const toSave = {
       ...contact,
       mobile: String(contact.mobile),
     };
-    await createContact(toSave);
+    await createContact(toSave, token);
     setMessage({
       show: true,
       name: contact.name,

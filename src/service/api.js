@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import axios from 'axios';
 
 // user@diwe.com.br
@@ -5,17 +6,6 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://contacts-api.prd.parceirodaconstrucao.com.br',
-});
-
-// Configuração para enviar o token no header de todas as requisições.
-api.interceptors.request.use(async (config) => {
-  const token = localStorage.getItem('token');
-
-  if (token) {
-    api.defaults.headers.authorization = `Bearer ${token}`;
-  }
-
-  return config;
 });
 
 export const auth = async (login) => {
@@ -28,9 +18,12 @@ export const auth = async (login) => {
   }
 };
 
-export const getContact = async () => {
+export const getContact = async (token) => {
   try {
-    const result = await api.get('/contacts');
+    const result = await api.get(
+      '/contacts',
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
     return result;
   } catch (error) {
     console.error(error);
@@ -38,9 +31,12 @@ export const getContact = async () => {
   }
 };
 
-export const getContactById = async (id) => {
+export const getContactById = async (id, token) => {
   try {
-    const result = await api.get(`/contacts/${id}`);
+    const result = await api.get(
+      `/contacts/${id}`,
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
     return result;
   } catch (error) {
     console.error(error);
@@ -48,27 +44,38 @@ export const getContactById = async (id) => {
   }
 };
 
-export const createContact = async (newContact) => {
+export const createContact = async (newContact, token) => {
   try {
-    await api.post('/contacts', newContact);
+    await api.post(
+      '/contacts',
+      newContact,
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
     console.log('Criado com sucesso');
   } catch (error) {
     console.error(error);
   }
 };
 
-export const updateContact = async (id, contact) => {
+export const updateContact = async (id, contact, token) => {
   try {
-    await api.put(`contacts/${id}`, contact);
+    await api.put(
+      `contacts/${id}`,
+      contact,
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
     console.log(id, 'Atualizado com sucesso');
   } catch (error) {
     console.error(error);
   }
 };
 
-export const removeContact = async (id) => {
+export const removeContact = async (id, token) => {
   try {
-    await api.delete(`/contacts/${id}`);
+    await api.delete(
+      `/contacts/${id}`,
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
     console.log(id, 'Deletado com sucesso');
   } catch (error) {
     console.error(error);

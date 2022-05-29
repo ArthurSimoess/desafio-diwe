@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import MyContext from '../../context/MyContext';
 import { removeContact } from '../../service/api';
+import getToken from '../../service/localStorage';
 import './removeModalStyle.scss';
 
 function RemoveModal({ change, setChange }) {
@@ -19,8 +20,9 @@ function RemoveModal({ change, setChange }) {
   }
 
   async function excludeContact() {
+    const token = getToken();
     const { id } = modal;
-    await removeContact(id);
+    await removeContact(id, token);
     setMessage({
       show: true,
       name: modal.name,

@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import check from '../../assets/images/check-circle.svg';
-import trash from '../../assets/images/x-circle.svg';
+import trash from '../../assets/images/trash.svg';
 import './successMessage.scss';
 
 function SuccessMessage({ name, action }) {
