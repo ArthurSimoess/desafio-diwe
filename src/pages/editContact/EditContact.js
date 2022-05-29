@@ -6,6 +6,7 @@ import Header from '../../components/header/Header';
 import { getContactById, updateContact } from '../../service/api';
 import './editContactStyle.scss';
 import MyContext from '../../context/MyContext';
+import getToken from '../../service/localStorage';
 
 function EditContact() {
   const [editContact, setEditContact] = useState({
@@ -25,7 +26,9 @@ function EditContact() {
 
   useEffect(() => {
     (async () => {
-      const { data } = await getContactById(id);
+      const token = getToken();
+      const { data } = await getContactById(id, token);
+      if (!data) return;
       setEditContact(data);
     })();
   }, []);
@@ -40,11 +43,12 @@ function EditContact() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const token = getToken();
     const toUpdate = {
       ...editContact,
       mobile: String(editContact.mobile),
     };
-    await updateContact(id, toUpdate);
+    await updateContact(id, toUpdate, token);
     setMessage({
       show: true,
       name: editContact.name,

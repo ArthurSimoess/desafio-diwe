@@ -9,6 +9,7 @@ import { getContact } from '../../service/api';
 import RemoveModal from '../../components/removeModal/removeModal';
 import MyContext from '../../context/MyContext';
 import SuccessMessage from '../../components/successMessage/SuccessMessage';
+import getToken from '../../service/localStorage';
 
 function ContactList() {
   const navigate = useNavigate();
@@ -20,7 +21,8 @@ function ContactList() {
 
   useEffect(() => {
     (async () => {
-      const result = await getContact();
+      const token = getToken();
+      const result = await getContact(token);
       if (!result.data) return;
       setContactList(result.data);
     })();
