@@ -21,8 +21,10 @@ function LoginPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const result = await auth(loginInfo);
-    localStorage.setItem('token', result.token);
+    const { data } = await auth(loginInfo);
+    console.log(data.token);
+    localStorage.setItem('token', data.token);
+    console.log(localStorage.getItem('token'));
     navigate('/contactList');
   }
 
@@ -33,7 +35,7 @@ function LoginPage() {
       </figure>
       <section className="forms-section">
         <div className="welcome-container">
-          <h1>Bem-vindo!</h1>
+          <h1>Bem-vindo(a)!</h1>
           <p>Faça login para acessar nossa plataforma</p>
         </div>
         <form onSubmit={handleSubmit}>
