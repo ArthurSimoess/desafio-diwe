@@ -3,7 +3,7 @@
 Desafio técnico proposto pela empresa [DIWE](https://diwe.com.br/). 
 Foi desenvolvido uma aplicação web para gerenciamento de uma lista de contatos
 podendo o usuário: listar, criar, editar e deletar contatos. Layout foi feito de
-acordo com o figma disponibilizado e totalmente responsivo.
+acordo com o figma disponibilizado.
 
 
 ## Deploy da aplicação
