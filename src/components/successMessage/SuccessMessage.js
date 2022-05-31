@@ -20,7 +20,7 @@ function SuccessMessage({ name, action }) {
         <p>
           O Contato
           {' '}
-          {name}
+          <span>{name}</span>
           {' '}
           foi
           {' '}
