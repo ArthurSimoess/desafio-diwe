@@ -22,6 +22,7 @@
     @include respond (phone) {
       width: 358px;
       top: 20px;
+      padding: 20px;
     }
 
     p {
@@ -33,6 +34,12 @@
       text-align: center;
       letter-spacing: -0.01em;
       color: #424242;
+
+      span {
+        font-weight: 700;
+        color: $title;
+        font-size: 18px;
+      }
     }
   }
 
@@ -60,6 +67,7 @@
     @include respond (phone) {
       width: 358px;
       top: 20px;
+      padding: 20px;
     }
 
     img {
@@ -76,6 +84,12 @@
       text-align: center;
       letter-spacing: -0.01em;
       color: #424242;
+
+      span {
+        font-weight: 700;
+        color: $title;
+        font-size: 18px;
+      }
     }
   }
 }
