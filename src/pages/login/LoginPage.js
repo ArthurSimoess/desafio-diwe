@@ -10,6 +10,7 @@ function LoginPage() {
     password: '',
   });
   const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState(false);
 
   function handleChange({ target }) {
     const { name, value } = target;
@@ -22,10 +23,12 @@ function LoginPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     const { data } = await auth(loginInfo);
-    console.log(data.token);
-    localStorage.setItem('token', data.token);
-    console.log(localStorage.getItem('token'));
-    navigate('/contactList');
+    if (!data) {
+      setErrorMsg(true);
+    } else {
+      localStorage.setItem('token', data.token);
+      navigate('/contactList');
+    }
   }
 
   return (
@@ -59,11 +62,21 @@ function LoginPage() {
               onChange={handleChange}
             />
           </label>
-          <button
-            type="submit"
-          >
-            Fazer login
-          </button>
+          <div className="login-btn-container">
+            <button
+              type="submit"
+            >
+              Fazer login
+            </button>
+            {
+              errorMsg
+                && (
+                <p className="error-msg">
+                  E-mail ou senha incorretos
+                </p>
+                )
+            }
+          </div>
         </form>
       </section>
     </main>

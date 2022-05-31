@@ -43,7 +43,7 @@
   }
 
   @if $breakpoint == notebook {
-    @media (min-width: 1200px) and (max-width: 1800px) {
+    @media (max-width: 1376px) {
       @content;
     }
   }

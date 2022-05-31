@@ -3,17 +3,33 @@
 .login-container {
   display: flex;
   justify-content: center;
-  gap: 10rem;
+  gap: 218px;
   align-items: center;
   height: 100vh;
   width: 100vw;
   background-color: white;
+
+  @include respond (tab-land) {
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
 }
 
 .figure {
   img {
     width: 546px;
     height: 546px;
+
+    @include respond (tab-land) {
+      width: 303px;
+      height: 303px;
+    }
+
+    @include respond (phone) {
+      width: 250px;
+      height: 250px;
+    }
   }
 }
 
@@ -27,7 +43,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 24px;
 
     h1 {
       text-align: center;
@@ -46,6 +62,10 @@
       font-weight: 500;
       line-height: 25.92px;
       opacity: 0.64;
+
+      @include respond (phone) {
+        font-size: 16px;
+      }
     }
   }
 
@@ -55,7 +75,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 24px;
 
     label {
       p {
@@ -77,19 +97,41 @@
       font-weight: 500;
       color: $paragraph;
       opacity: 0.64;
+
+      @include respond (phone) {
+        width: 358px;
+      }
     }
 
-    button {
-      background-color: $primary-dark;
-      width: 504px;
-      height: 56px;
-      border-radius: 8px;
-      color: white;
-      font-size: 16px;
-      margin-top: 40px;
-      cursor: pointer;
-      font-family: "Montserrat";
-      font-weight: 500;
+    .login-btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+
+      button {
+        background-color: $primary-dark;
+        width: 504px;
+        height: 56px;
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+        margin-top: 56px;
+        cursor: pointer;
+        font-family: "Montserrat";
+        font-weight: 500;
+
+        @include respond (phone) {
+          width: 358px;
+        }
+      }
+
+      p {
+        color: #FC3333;
+        font-family: "Montserrat";
+        font-weight: 500;
+        font-size: 16px; 
+      }
     }
   }
 }

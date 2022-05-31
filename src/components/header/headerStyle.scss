@@ -17,6 +17,10 @@ header {
       width: 40px;
       height: 40px;
       margin-left: 56px;
+
+      @include respond (phone) {
+        margin-left: 10px
+      }
     }
   
     p {

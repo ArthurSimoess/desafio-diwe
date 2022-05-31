@@ -17,6 +17,16 @@
     align-items: center;
     gap: 56px;
 
+    @include respond (tab-port-small) {
+      width: 600px;
+      height: 543px;
+    }
+
+    @include respond (phone) {
+      width: 400px;
+      height: 543px;
+    }
+
     button {
       justify-content: center;
       align-items: center;
@@ -33,6 +43,16 @@
       color: white;
       margin-top: 24px;
       cursor: pointer;
+
+      @include respond (tab-port-small) {
+        width: 600px;
+        height: 543px;
+      }
+  
+      @include respond (phone) {
+        width: 358px;
+        height: 56px;
+      }
     }
   }
 
@@ -64,6 +84,10 @@
       letter-spacing: -0.02em;
       color: $paragraph;
       opacity: 0.64;
+
+      @include respond (phone) {
+        font-size: 16px;
+      }
     }
   }
 
@@ -89,7 +113,18 @@
         padding: 16px;
         width: 744px;
         height: 56px;
+        border-radius: 8px;
         background-color: $neutral-light;
+
+        @include respond (tab-port-small) {
+          width: 500px;
+          height: 56px;
+        }
+
+        @include respond (phone) {
+          width: 358px;
+          height: 56px;
+        }
       }
     }
 
@@ -97,11 +132,29 @@
       display: flex;
       gap: 22px;
 
+      @include respond (tab-port-small) {
+        flex-direction: column;
+      }
+
+      @include respond (phone) {
+        flex-direction: column;
+      }
+
       input {
         width: 361px;
         height: 56px;
         padding: 16px;
         border-radius: 8px;
+
+        @include respond (tab-port-small) {
+          width: 500px;
+          height: 56px;
+        }
+
+        @include respond (tab-port-small) {
+          width: 358px;
+          height: 56px;
+        }
       }
     }
   }

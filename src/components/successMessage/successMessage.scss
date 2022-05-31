@@ -1,3 +1,5 @@
+@import '../../styles/main';
+
 .deleted-message {
   display: flex;
   justify-content: center;
@@ -15,6 +17,11 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
+    border: 1px solid #FC3333;
+
+    @include respond (phone) {
+      width: 358px;
+    }
 
     p {
       font-family: 'Montserrat';
@@ -47,6 +54,7 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
+    border: 1px solid #9DF28F;
 
     img {
       width: 24px;

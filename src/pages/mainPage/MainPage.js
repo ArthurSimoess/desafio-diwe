@@ -10,6 +10,7 @@ import RemoveModal from '../../components/removeModal/removeModal';
 import MyContext from '../../context/MyContext';
 import SuccessMessage from '../../components/successMessage/SuccessMessage';
 import getToken from '../../service/localStorage';
+import CardMobile from '../../components/cardMobile/CardMobile';
 
 function MainPage() {
   const navigate = useNavigate();
@@ -84,6 +85,10 @@ function MainPage() {
           action={message.action}
         />
       )}
+      <CardMobile
+        contactList={contactList}
+        setModal={setModal}
+      />
       <section className="list-container">
         <div className="header-list">
           <h1>Listagem de Contatos</h1>

@@ -23,7 +23,7 @@ export const getContact = async (token) => {
     return result;
   } catch (error) {
     console.error(error);
-    return error.response.data.errors;
+    return 'Error';
   }
 };
 
