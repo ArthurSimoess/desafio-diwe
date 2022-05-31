@@ -14,6 +14,7 @@ function CreateContact() {
     email: '',
     mobile: '',
   });
+  const [disableBtn, setDisableBtn] = useState(false);
   const { setMessage } = useContext(MyContext);
   const navigate = useNavigate();
 
@@ -38,7 +39,9 @@ function CreateContact() {
       ...contact,
       mobile: String(contact.mobile),
     };
+    setDisableBtn(true);
     await createContact(toSave, token);
+    setDisableBtn(false);
     setMessage({
       show: true,
       name: contact.name,
@@ -55,6 +58,7 @@ function CreateContact() {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         text={textObj}
+        disabled={disableBtn}
       />
     </main>
   );

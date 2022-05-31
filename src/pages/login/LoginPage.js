@@ -11,6 +11,7 @@ function LoginPage() {
   });
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState(false);
+  const [disableBtn, setDisableBtn] = useState(false);
 
   function handleChange({ target }) {
     const { name, value } = target;
@@ -22,7 +23,9 @@ function LoginPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setDisableBtn(true);
     const { data } = await auth(loginInfo);
+    setDisableBtn(false);
     if (!data) {
       setErrorMsg(true);
     } else {
@@ -65,6 +68,7 @@ function LoginPage() {
           <div className="login-btn-container">
             <button
               type="submit"
+              disabled={disableBtn}
             >
               Fazer login
             </button>

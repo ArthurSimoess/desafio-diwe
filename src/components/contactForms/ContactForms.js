@@ -4,7 +4,7 @@ import React from 'react';
 import './contactFormsStyle.scss';
 
 function ContactForms({
-  contact, handleChange, handleSubmit, text,
+  contact, handleChange, handleSubmit, text, disabled,
 }) {
   return (
     <div className="create-forms-container">
@@ -52,6 +52,7 @@ function ContactForms({
         </div>
         <button
           type="submit"
+          disabled={disabled}
         >
           {text.btn}
         </button>
@@ -73,6 +74,7 @@ ContactForms.propTypes = {
     paragraph: PropTypes.string,
     btn: PropTypes.string,
   }).isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default ContactForms;
