@@ -58,7 +58,7 @@ function EditContact() {
   }
 
   return (
-    <main className="main-create">
+    <main className="main-edit">
       <Header path="/contactList" />
       <ContactForms
         contact={editContact}

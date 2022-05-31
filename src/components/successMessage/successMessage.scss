@@ -21,6 +21,7 @@
 
     @include respond (phone) {
       width: 358px;
+      top: 20px;
     }
 
     p {
@@ -55,6 +56,11 @@
     align-items: center;
     gap: 16px;
     border: 1px solid #9DF28F;
+
+    @include respond (phone) {
+      width: 358px;
+      top: 20px;
+    }
 
     img {
       width: 24px;

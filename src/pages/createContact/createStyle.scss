@@ -5,4 +5,8 @@
   width: 100vw;
   background-color: $bg-gray;
   overflow: auto;
+
+  @include respond (phone) {
+    background-color: #FFFFFF;
+  }
 }
