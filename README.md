@@ -66,12 +66,12 @@ npm test
 
 ### Mobile
 <p>
-   <img width="400" height="800" src="src/assets/videos/diweMobile.gif" />
+   <img width="400" height="700" src="src/assets/videos/diweMobile.gif" />
 </p>
 
 ### Web
 
 <p>
-  <img width="800" height="800" src="src/assets/videos/gifDiweWeb.gif" />
+  <img width="600" height="600" src="src/assets/videos/gifDiweWeb.gif" />
 </p>
 
