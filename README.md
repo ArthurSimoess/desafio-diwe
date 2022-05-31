@@ -72,6 +72,6 @@ npm test
 ### Web
 
 <p>
-  <img width="600" height="600" src="src/assets/videos/gifDiweWeb.gif" />
+  <img width="700" height="600" src="src/assets/videos/gifDiweWeb.gif" />
 </p>
 
