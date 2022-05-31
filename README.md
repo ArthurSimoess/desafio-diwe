@@ -63,3 +63,11 @@ npm test
 ```
 
 ## Aplicação
+
+<p>
+   <img width="400" height="350" src="src/assets/videos/diweMobile.gif" />
+</p>
+
+<p>
+   <img width="400" height="350" src="src/assets/videos/gifDiweWeb.gif" />
+</p>
