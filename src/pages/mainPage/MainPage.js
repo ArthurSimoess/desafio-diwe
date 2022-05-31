@@ -24,7 +24,9 @@ function MainPage() {
     (async () => {
       const token = getToken();
       const result = await getContact(token);
-      if (!result.data) return;
+      if (!result.data) {
+        navigate('/');
+      }
       setContactList(result.data);
     })();
   }, [change]);
