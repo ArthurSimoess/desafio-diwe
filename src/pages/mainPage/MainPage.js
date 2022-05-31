@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BtnHeaderTable from '../../components/btnHeaderTable/BtnHeaderTable';
 import Header from '../../components/header/Header';
-import './contactListStyle.scss';
+import './mainPageStyle.scss';
 import trash from '../../assets/images/trash.svg';
 import editIcon from '../../assets/images/edit.svg';
 import { getContact } from '../../service/api';
@@ -10,8 +10,9 @@ import RemoveModal from '../../components/removeModal/removeModal';
 import MyContext from '../../context/MyContext';
 import SuccessMessage from '../../components/successMessage/SuccessMessage';
 import getToken from '../../service/localStorage';
+import CardMobile from '../../components/cardMobile/CardMobile';
 
-function ContactList() {
+function MainPage() {
   const navigate = useNavigate();
   const [contactList, setContactList] = useState([]);
   const {
@@ -84,6 +85,10 @@ function ContactList() {
           action={message.action}
         />
       )}
+      <CardMobile
+        contactList={contactList}
+        setModal={setModal}
+      />
       <section className="list-container">
         <div className="header-list">
           <h1>Listagem de Contatos</h1>
@@ -161,4 +166,4 @@ function ContactList() {
   );
 }
 
-export default ContactList;
+export default MainPage;

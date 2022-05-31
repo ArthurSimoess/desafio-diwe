@@ -4,14 +4,10 @@ import axios from 'axios';
 // user@diwe.com.br
 // Mob20we23##
 
-const api = axios.create({
-  baseURL: 'https://contacts-api.prd.parceirodaconstrucao.com.br',
-});
-
 export const auth = async (login) => {
   try {
-    const result = await api.post('/auth/login', login);
-    return result.data;
+    const result = await axios.post('https://contacts-api.prd.parceirodaconstrucao.com.br/auth/login', login);
+    return result;
   } catch (error) {
     console.error(error.response.data.errors);
     return 'error';
@@ -20,21 +16,21 @@ export const auth = async (login) => {
 
 export const getContact = async (token) => {
   try {
-    const result = await api.get(
-      '/contacts',
+    const result = await axios.get(
+      'https://contacts-api.prd.parceirodaconstrucao.com.br/contacts',
       { headers: { Authorization: `Bearer ${token}` } },
     );
     return result;
   } catch (error) {
     console.error(error);
-    return error.response.data.errors;
+    return 'Error';
   }
 };
 
 export const getContactById = async (id, token) => {
   try {
-    const result = await api.get(
-      `/contacts/${id}`,
+    const result = await axios.get(
+      `https://contacts-api.prd.parceirodaconstrucao.com.br/contacts/${id}`,
       { headers: { Authorization: `Bearer ${token}` } },
     );
     return result;
@@ -46,8 +42,8 @@ export const getContactById = async (id, token) => {
 
 export const createContact = async (newContact, token) => {
   try {
-    await api.post(
-      '/contacts',
+    await axios.post(
+      'https://contacts-api.prd.parceirodaconstrucao.com.br/contacts',
       newContact,
       { headers: { Authorization: `Bearer ${token}` } },
     );
@@ -59,8 +55,8 @@ export const createContact = async (newContact, token) => {
 
 export const updateContact = async (id, contact, token) => {
   try {
-    await api.put(
-      `contacts/${id}`,
+    await axios.put(
+      `https://contacts-api.prd.parceirodaconstrucao.com.br/contacts/${id}`,
       contact,
       { headers: { Authorization: `Bearer ${token}` } },
     );
@@ -72,8 +68,8 @@ export const updateContact = async (id, contact, token) => {
 
 export const removeContact = async (id, token) => {
   try {
-    await api.delete(
-      `/contacts/${id}`,
+    await axios.delete(
+      `https://contacts-api.prd.parceirodaconstrucao.com.br/contacts/${id}`,
       { headers: { Authorization: `Bearer ${token}` } },
     );
     console.log(id, 'Deletado com sucesso');

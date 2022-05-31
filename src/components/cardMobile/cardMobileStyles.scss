@@ -1,0 +1,99 @@
+@import '../../styles/main';
+
+.card-container {
+   flex-direction: column;
+   gap: 16px;
+   align-items: center;
+   display: none;
+
+   @include respond (tab-port) {
+    display: flex;
+  }
+
+   .create-contact-btn {
+    width: 231px;
+    height: 56px;
+    border-radius: 8px;
+    color: white;
+    margin-top: 30px;
+    background-color: #4263EB;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 148%;
+    text-align: center;
+    cursor: pointer;
+   }
+}
+
+.card-contact {
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  width: 358px;
+  height: 153px;
+  padding: 26px;
+  display: flex;
+  justify-content: space-between;
+  
+  .info-contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    div:nth-child(1) {
+      h1 {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 148%;
+        letter-spacing: -0.01em;
+        color: #424242;
+      }
+
+      p {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 148%;
+        letter-spacing: -0.01em;
+        color: #757575;
+      }
+    }
+
+    div:nth-child(2) {
+      display: flex;
+      align-items: center;
+
+      p {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 148%;
+        letter-spacing: -0.01em;
+        color: #424242;
+      }
+    }
+  }
+
+  .edit-remove-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    button {
+      cursor: pointer;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 148%;
+      letter-spacing: -0.01em;
+      color: #757575;
+    }
+  }
+}

@@ -10,6 +10,7 @@ function LoginPage() {
     password: '',
   });
   const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState(false);
 
   function handleChange({ target }) {
     const { name, value } = target;
@@ -21,9 +22,13 @@ function LoginPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const result = await auth(loginInfo);
-    localStorage.setItem('token', result.token);
-    navigate('/contactList');
+    const { data } = await auth(loginInfo);
+    if (!data) {
+      setErrorMsg(true);
+    } else {
+      localStorage.setItem('token', data.token);
+      navigate('/contactList');
+    }
   }
 
   return (
@@ -33,7 +38,7 @@ function LoginPage() {
       </figure>
       <section className="forms-section">
         <div className="welcome-container">
-          <h1>Bem-vindo!</h1>
+          <h1>Bem-vindo(a)!</h1>
           <p>Faça login para acessar nossa plataforma</p>
         </div>
         <form onSubmit={handleSubmit}>
@@ -57,11 +62,21 @@ function LoginPage() {
               onChange={handleChange}
             />
           </label>
-          <button
-            type="submit"
-          >
-            Fazer login
-          </button>
+          <div className="login-btn-container">
+            <button
+              type="submit"
+            >
+              Fazer login
+            </button>
+            {
+              errorMsg
+                && (
+                <p className="error-msg">
+                  E-mail ou senha incorretos
+                </p>
+                )
+            }
+          </div>
         </form>
       </section>
     </main>
