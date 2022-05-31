@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import MyContext from '../../context/MyContext';
 import { removeContact } from '../../service/api';
 import getToken from '../../service/localStorage';
@@ -10,6 +10,7 @@ function RemoveModal({ change, setChange }) {
   const {
     modal, setModal, setMessage,
   } = useContext(MyContext);
+  const [disableBtn, setDisableBtn] = useState(false);
 
   function closeModal() {
     setModal({
@@ -22,7 +23,9 @@ function RemoveModal({ change, setChange }) {
   async function excludeContact() {
     const token = getToken();
     const { id } = modal;
+    setDisableBtn(true);
     await removeContact(id, token);
+    setDisableBtn(false);
     setMessage({
       show: true,
       name: modal.name,
@@ -53,6 +56,7 @@ function RemoveModal({ change, setChange }) {
           <button
             type="button"
             onClick={excludeContact}
+            disabled={disableBtn}
           >
             Excluir contato
           </button>

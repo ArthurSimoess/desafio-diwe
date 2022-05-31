@@ -14,6 +14,7 @@ function EditContact() {
     email: '',
     mobile: '',
   });
+  const [disableBtn, setDisableBtn] = useState(false);
   const { id } = useParams();
   const { setMessage } = useContext(MyContext);
   const navigate = useNavigate();
@@ -48,7 +49,9 @@ function EditContact() {
       ...editContact,
       mobile: String(editContact.mobile),
     };
+    setDisableBtn(true);
     await updateContact(id, toUpdate, token);
+    setDisableBtn(false);
     setMessage({
       show: true,
       name: editContact.name,
@@ -65,6 +68,7 @@ function EditContact() {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         text={textObj}
+        disabled={disableBtn}
       />
     </main>
   );

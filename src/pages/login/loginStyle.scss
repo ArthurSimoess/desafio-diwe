@@ -120,6 +120,11 @@
         cursor: pointer;
         font-family: "Montserrat";
         font-weight: 500;
+        
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
 
         @include respond (phone) {
           width: 358px;
