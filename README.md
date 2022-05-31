@@ -65,9 +65,9 @@ npm test
 ## Aplicação
 
 <p>
-   <img width="400" height="350" src="src/assets/videos/diweMobile.gif" />
+   <img width="400" height="500" src="src/assets/videos/diweMobile.gif" />
 </p>
 
 <p>
-   <img width="400" height="350" src="src/assets/videos/gifDiweWeb.gif" />
+   <img width="400" height="500" src="src/assets/videos/gifDiweWeb.gif" />
 </p>
